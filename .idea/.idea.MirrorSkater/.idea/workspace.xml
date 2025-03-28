@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37ca3424-1048-46f0-9174-90c30654d7af" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MirrorSkater/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MirrorSkater/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +110,7 @@
       <option name="presentableId" value="Default" />
       <updated>1743130121496</updated>
       <workItem from="1743130121497" duration="1936000" />
-      <workItem from="1743145552642" duration="15042000" />
+      <workItem from="1743145552642" duration="15451000" />
     </task>
     <servers />
   </component>
@@ -147,26 +146,26 @@
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs</url>
-          <line>78</line>
+          <line>83</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\Scripts\ProceduralGeneration\FloorGenerator.cs" containingFunctionPresentation="Method 'GenerateFloor'">
             <startOffsets>
-              <option value="2329" />
+              <option value="2453" />
             </startOffsets>
             <endOffsets>
-              <option value="2353" />
+              <option value="2477" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs</url>
-          <line>52</line>
+          <line>53</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\Scripts\ProceduralGeneration\FloorGenerator.cs" containingFunctionPresentation="Method 'GenerateFloor'">
             <startOffsets>
-              <option value="1501" />
+              <option value="1546" />
             </startOffsets>
             <endOffsets>
-              <option value="1539" />
+              <option value="1584" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="10" />
