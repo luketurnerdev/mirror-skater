@@ -19,6 +19,8 @@ public class PlayerControls : MonoBehaviour
     public float jumpingMaxVelocity = 5f;
     public float olliePopForce = 5f;
     public bool hasOlliePopped;
+    public bool isGrounded;
+    public Animator animatorController;
     [FormerlySerializedAs("velocityDescentTime")] public float velocityDescentAmount;
 
     private void Awake()
@@ -41,31 +43,42 @@ public class PlayerControls : MonoBehaviour
             Jump();
         }
     }
+    
+    public void SetIsGrounded(bool grounded)
+    {
+        isGrounded = grounded;
+    }
 
     private void FixedUpdate()
     {
-        bool isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);  // Adjust the distance as needed
+        Debug.Log("IsGrounded: " + isGrounded);
         float verticalVelocity = rb.linearVelocity.y;
 
         if (isGrounded)
         {
             // Player is on the ground, reset booleans
+            Debug.Log("Player is grounded");
             isJumping = false;
             isFalling = false;
+            animatorController.Play("Skating");
         }
         else if (verticalVelocity > 0)
         {
             // Player is moving upwards (jumping)
+            Debug.Log("Player is jumping");
             isJumping = true;
             isFalling = false;
             ApplyJumpForce();
+            animatorController.Play("in air");
         }
         else if (verticalVelocity < 0)
         {
             // Player is moving downwards (falling)
+            Debug.Log("Player is falling");
             isJumping = false;
             isFalling = true;
             ApplyGravityForce();
+            animatorController.Play("in air");
         }
     }
 
@@ -100,10 +113,11 @@ public class PlayerControls : MonoBehaviour
     // On release
     void Jump()
     {
-        // if (isJumping) return;
-        // if (!isCrouching) return;
-        //
+        // Dont allow double jumps
+        if (!isGrounded) return;
+        
         isCrouching = false;
+        isGrounded = false;
         gameObject.GetComponent<MeshRenderer>().material = normalMat;
         
         isJumping = true;

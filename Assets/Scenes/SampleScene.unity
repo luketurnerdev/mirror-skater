@@ -777,10 +777,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 425012888}
     m_Modifications:
     - target: {fileID: 1741520735807652605, guid: ada010109d4b45f4c8c5371f0410f57f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 10.191
-      objectReference: {fileID: 0}
-    - target: {fileID: 1741520735807652605, guid: ada010109d4b45f4c8c5371f0410f57f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1542,6 +1538,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7109550364270370825, guid: 189e806cfaca04a39a85bc8cf1427c6c, type: 3}
   m_PrefabInstance: {fileID: 1499057578}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1499057580 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7109550364277558853, guid: 189e806cfaca04a39a85bc8cf1427c6c, type: 3}
+  m_PrefabInstance: {fileID: 1499057578}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1502177014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8609597081106274815, guid: a9949fc0f0890784284c1b71ba4fa474, type: 3}
@@ -1865,6 +1866,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3003400087665795353, guid: a9949fc0f0890784284c1b71ba4fa474, type: 3}
+      propertyPath: animatorController
+      value: 
+      objectReference: {fileID: 1499057580}
     - target: {fileID: 8609597081106274815, guid: a9949fc0f0890784284c1b71ba4fa474, type: 3}
       propertyPath: m_LocalScale.x
       value: 4

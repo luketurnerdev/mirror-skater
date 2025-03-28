@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37ca3424-1048-46f0-9174-90c30654d7af" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MirrorSkater/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MirrorSkater/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PlayerControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerControls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scanta/King Ultramarine/AnimatorController/KingUltramarine.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scanta/King Ultramarine/AnimatorController/KingUltramarine.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scanta/King Ultramarine/AnimatorController/Skating.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scanta/King Ultramarine/AnimatorController/Skating.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +34,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/84f0d810adef4e6c8deab33e4ae93f7c1dec00/8a/5f9ee2a8/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://F:/UnityProjects/MirrorSkater/Assets/PlayerControls.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -110,7 +115,7 @@
       <option name="presentableId" value="Default" />
       <updated>1743130121496</updated>
       <workItem from="1743130121497" duration="1936000" />
-      <workItem from="1743145552642" duration="15451000" />
+      <workItem from="1743145552642" duration="19183000" />
     </task>
     <servers />
   </component>
@@ -133,13 +138,13 @@
       <breakpoints>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/PlayerControls.cs</url>
-          <line>74</line>
+          <line>82</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\PlayerControls.cs" containingFunctionPresentation="Method 'ApplyGravityForce'">
             <startOffsets>
-              <option value="1947" />
+              <option value="2230" />
             </startOffsets>
             <endOffsets>
-              <option value="1997" />
+              <option value="2280" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
@@ -149,10 +154,10 @@
           <line>83</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\Scripts\ProceduralGeneration\FloorGenerator.cs" containingFunctionPresentation="Method 'GenerateFloor'">
             <startOffsets>
-              <option value="2453" />
+              <option value="2380" />
             </startOffsets>
             <endOffsets>
-              <option value="2477" />
+              <option value="2404" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="7" />
