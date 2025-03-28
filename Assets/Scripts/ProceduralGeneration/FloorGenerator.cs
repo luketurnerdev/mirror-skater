@@ -1,22 +1,17 @@
-using System;
 using UnityEngine;
-using System.Collections.Generic;
-using Random = UnityEngine.Random;
 
 public class FloorGenerator : MonoBehaviour
 {
     public FloorSegmentData segmentPrefab;
     public GameObject floorSegmentsParent;
     public GameObject colliderPrefab;
-    public Material redmat;
-    public Material bluemat;
+    public Material redFloorMat; 
+    public Material blueFoorMat;
     
     // max amount of segments
     public int segmentCount = 10;
-    
-    // how long the literal segment is ?
-    private float segmentLength = 10;
-    private Vector2 spawnPosition = Vector2.zero;
+    private float segmentLength;
+    private Vector2 currentSegmentSpawnPos = Vector2.zero;
 
     private void Start()
     {
@@ -55,25 +50,17 @@ public class FloorGenerator : MonoBehaviour
         {
             var segmentData = segmentPrefab;
 
-            GameObject segment = Instantiate(segmentData.floorPrefab, spawnPosition, Quaternion.identity);
+            GameObject segment = Instantiate(segmentData.floorPrefab, currentSegmentSpawnPos, Quaternion.identity);
             segment.transform.parent = floorSegmentsParent.transform;
-            
-            if (i % 2 == 0)
-            {
-                segment.GetComponent<Renderer>().material = redmat;
-            }
-            else
-            {
-                segment.GetComponent<Renderer>().material = bluemat;
-            }
     
-            spawnPosition.x += segmentLength;
+            segmentLength = segment.GetComponent<Renderer>().bounds.size.x;
+            // Move the spawn position to the right by the length of the segment
+            currentSegmentSpawnPos.x += segmentLength;
+            
+            AlternateFloorMaterial(segment, i);
 
-            //0
-            // x = 10
-            // x = 20
-           
-
+            SometimesSpawnRailOnSegment(segmentData, segment);
+            
             if (i == segmentCount-4)
             {
                 Instantiate(colliderPrefab, segment.transform);
@@ -84,5 +71,29 @@ public class FloorGenerator : MonoBehaviour
         CleanupPreviousBlocks();
         
         
+    }
+
+    void SometimesSpawnRailOnSegment(FloorSegmentData data, GameObject parent)
+    {
+        data.hasRail = Random.value > 0.5f;
+        if (!data.hasRail) return;
+        
+        GameObject rail = Instantiate(data.railPrefab, currentSegmentSpawnPos, Quaternion.identity);
+        rail.transform.parent = parent.transform;
+        
+        // Move it up a bit
+        rail.transform.localPosition += new Vector3(0, 2, 0);
+    }
+
+    void AlternateFloorMaterial(GameObject segment, int i)
+    {
+        if (i % 2 == 0)
+        {
+            segment.GetComponent<Renderer>().material = redFloorMat;
+        }
+        else
+        {
+            segment.GetComponent<Renderer>().material = blueFoorMat;
+        }
     }
 }

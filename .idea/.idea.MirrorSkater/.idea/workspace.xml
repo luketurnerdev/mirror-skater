@@ -6,10 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="37ca3424-1048-46f0-9174-90c30654d7af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MirrorSkater/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MirrorSkater/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerControls.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scanta/King Ultramarine/AnimatorController/KingUltramarine.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scanta/King Ultramarine/AnimatorController/KingUltramarine.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scanta/King Ultramarine/AnimatorController/Skating.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scanta/King Ultramarine/AnimatorController/Skating.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DetectPlayerGrounded.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DetectPlayerGrounded.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/FloorSegment.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/FloorSegment.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Rail.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Rail.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorSegmentData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorSegmentData.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +117,7 @@
       <option name="presentableId" value="Default" />
       <updated>1743130121496</updated>
       <workItem from="1743130121497" duration="1936000" />
-      <workItem from="1743145552642" duration="19183000" />
+      <workItem from="1743145552642" duration="21074000" />
     </task>
     <servers />
   </component>
@@ -138,65 +140,65 @@
       <breakpoints>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/PlayerControls.cs</url>
-          <line>82</line>
+          <line>87</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\PlayerControls.cs" containingFunctionPresentation="Method 'ApplyGravityForce'">
             <startOffsets>
-              <option value="2230" />
+              <option value="2314" />
             </startOffsets>
             <endOffsets>
-              <option value="2280" />
+              <option value="2364" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs</url>
-          <line>83</line>
+          <line>70</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\Scripts\ProceduralGeneration\FloorGenerator.cs" containingFunctionPresentation="Method 'GenerateFloor'">
             <startOffsets>
-              <option value="2380" />
+              <option value="2253" />
             </startOffsets>
             <endOffsets>
-              <option value="2404" />
+              <option value="2277" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs</url>
-          <line>53</line>
+          <line>48</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\Scripts\ProceduralGeneration\FloorGenerator.cs" containingFunctionPresentation="Method 'GenerateFloor'">
             <startOffsets>
-              <option value="1546" />
+              <option value="1431" />
             </startOffsets>
             <endOffsets>
-              <option value="1584" />
+              <option value="1469" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs</url>
-          <line>48</line>
+          <line>43</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\Scripts\ProceduralGeneration\FloorGenerator.cs" containingFunctionPresentation="Method 'GenerateFloor'">
             <startOffsets>
-              <option value="1305" />
+              <option value="1190" />
             </startOffsets>
             <endOffsets>
-              <option value="1306" />
+              <option value="1191" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs</url>
-          <line>28</line>
+          <line>23</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\Scripts\ProceduralGeneration\FloorGenerator.cs" containingFunctionPresentation="Method 'CleanupPreviousBlocks'">
             <startOffsets>
-              <option value="726" />
+              <option value="611" />
             </startOffsets>
             <endOffsets>
-              <option value="781" />
+              <option value="666" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="12" />
