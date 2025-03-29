@@ -65,7 +65,7 @@ public class FloorGenerator : MonoBehaviour
             AlternateFloorMaterial(segment, i);
             // Add stuff to the segment
             
-            SometimesAddStuffToSegment(segmentData, segment);
+            // SometimesAddStuffToSegment(segmentData, segment);
             
             // The index of the block where we want to spawn a new block
             // When user crosses it

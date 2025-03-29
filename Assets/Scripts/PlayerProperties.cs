@@ -51,19 +51,17 @@ public class PlayerProperties : MonoBehaviour
         playerControls = FindObjectOfType<PlayerControls>();
         
         health = 100;
+        
+        // Rigidbody stuff
+        Rigidbody rb = GetComponent<Rigidbody>();
+        // rb.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
     void Update()
     {
-        // Handle Falling Buffer Timer
-        if (isFallingBufferActive)
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            fallingBufferTimer += Time.deltaTime;
-            if (fallingBufferTimer >= fallingBufferDuration)
-            {
-                isFallingBufferActive = false;
-                fallingBufferTimer = 0f;
-            }
+            StartCoroutine(IgnorePhysicsOnRespawn());
         }
     }
 
