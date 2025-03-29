@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class DetectGrinding : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionStay(Collision other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
+        if (other.gameObject.CompareTag("Player") && PlayerProperties.Instance.playerState != PlayerProperties.PlayerState.Grinding)
+        { 
             PlayerProperties.Instance.ChangeState(PlayerProperties.PlayerState.Grinding);
         }
     }

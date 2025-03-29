@@ -6,10 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="37ca3424-1048-46f0-9174-90c30654d7af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MirrorSkater/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MirrorSkater/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/DetectGrinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DetectGrinding.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerControls.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerProperties.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerProperties.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/DefaultVolumeProfile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +125,7 @@
       <updated>1743130121496</updated>
       <workItem from="1743130121497" duration="1936000" />
       <workItem from="1743145552642" duration="21074000" />
-      <workItem from="1743210394174" duration="4404000" />
+      <workItem from="1743210394174" duration="9937000" />
     </task>
     <servers />
   </component>
@@ -143,13 +148,13 @@
       <breakpoints>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs</url>
-          <line>81</line>
+          <line>80</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\Scripts\ProceduralGeneration\FloorGenerator.cs" containingFunctionPresentation="Method 'GenerateFloor'">
             <startOffsets>
-              <option value="2757" />
+              <option value="2688" />
             </startOffsets>
             <endOffsets>
-              <option value="2780" />
+              <option value="2711" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="7" />
@@ -194,17 +199,17 @@
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/PlayerProperties.cs</url>
-          <line>81</line>
-          <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\Scripts\PlayerProperties.cs" containingFunctionPresentation="Method 'ChangeState'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/DetectCollision.cs</url>
+          <line>12</line>
+          <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\Scripts\DetectCollision.cs" containingFunctionPresentation="Method 'OnCollisionEnter'">
             <startOffsets>
-              <option value="2191" />
+              <option value="360" />
             </startOffsets>
             <endOffsets>
-              <option value="2208" />
+              <option value="393" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="13" />
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

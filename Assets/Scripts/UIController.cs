@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class UIController : MonoBehaviour
@@ -16,12 +17,16 @@ public class UIController : MonoBehaviour
         gameOverCanvas.SetActive(false);
         UICanvas.SetActive(true);
     }
-
+    
     public void Respawn()
     {
-        Time.timeScale = 1;
         HideGameOverScreen();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartCoroutine(PlayerProperties.Instance.IgnorePhysicsOnRespawn());
+    }
+
+    private void ResetStatics()
+    {
+        PlayerProperties.Instance = null; 
     }
     
     

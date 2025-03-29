@@ -1,10 +1,12 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerProperties : MonoBehaviour
 {
-    public int health = 100;
+    public int health;
     private UIController _UIController;
     private ScoreController scoreController;
+    private PlayerControls playerControls;
     
     public delegate void PlayerStateChangeHandler(PlayerState newState);
     public PlayerStateChangeHandler OnPlayerStateChange;
@@ -23,7 +25,7 @@ public class PlayerProperties : MonoBehaviour
     public PlayerState playerState = PlayerState.Grounded;
 
     // Singleton
-    public static PlayerProperties Instance { get; private set; }
+    public static PlayerProperties Instance { get; set; }
 
     // Falling Buffer System
     private bool isFallingBufferActive = false;
@@ -46,6 +48,9 @@ public class PlayerProperties : MonoBehaviour
     {
         _UIController = FindObjectOfType<UIController>();
         scoreController = FindObjectOfType<ScoreController>();
+        playerControls = FindObjectOfType<PlayerControls>();
+        
+        health = 100;
     }
 
     void Update()
@@ -138,9 +143,54 @@ public class PlayerProperties : MonoBehaviour
     {
         Time.timeScale = 0;
         _UIController.ShowGameOverScreen();
+        
         // pause execution of game 
         // death fx
         // Visually delete player
         // show game over screen / score / respawn button / leaderboard button
+    }
+    
+    public IEnumerator IgnorePhysicsOnRespawn()
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        // Reset position to a safe location
+        player.transform.position = new Vector3(0, 1, 0);  // Example respawn position
+    
+        // Disable the player's collider to prevent immediate collisions
+        Collider playerCollider = player.GetComponent<Collider>();
+        if (playerCollider != null)
+        {
+            playerCollider.enabled = false;
+        }
+
+        // Optionally, disable the Rigidbody temporarily to ensure no physics interactions
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true; // Prevent physics interactions
+            rb.linearVelocity = Vector3.zero; // Clear any existing velocity
+        }
+
+        // Reset physics simulation if Time.timeScale was set to 0
+        Time.timeScale = 1;
+
+        // Wait for a small amount of time to allow physics to update
+        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
+
+        // Re-enable the player's collider and Rigidbody
+        if (playerCollider != null)
+        {
+            playerCollider.enabled = true;
+        }
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+        }
+    }
+    
+    public void Respawn()
+    {
+        StartCoroutine(IgnorePhysicsOnRespawn());
     }
 }

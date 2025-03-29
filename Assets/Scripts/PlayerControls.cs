@@ -1,22 +1,21 @@
 using System;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerControls : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float crouchAmount = 0.5f;
-    public float jumpForce = 10f;
+    public float moveSpeed = 30f;
     private Rigidbody rb;
-    public Material crouchingMat;
-    public Material normalMat;
+    
+    // Jump physics
     public float fallMultiplier = 5f;
     public float jumpMultiplier = 5f;
-    public float jumpingMaxVelocity = 5f;
     public float olliePopForce = 5f;
+    
+    // Animations
     public Animator animatorController;
-    [FormerlySerializedAs("velocityDescentTime")] public float velocityDescentAmount;
 
     private void Awake()
     {
@@ -52,29 +51,56 @@ public class PlayerControls : MonoBehaviour
     private void FixedUpdate()
     {
         float verticalVelocity = rb.linearVelocity.y;
-
-        if (PlayerProperties.Instance.playerState == PlayerProperties.PlayerState.Grounded)
-        {
-            animatorController.Play("Skating");
-        }
-        else if (verticalVelocity > 0)
+        
+        if (verticalVelocity > 0)
         {
             // Player is moving upwards (jumping)
-            PlayerProperties.Instance.ChangeState(PlayerProperties.PlayerState.Rising);
-            ApplyJumpForce();
-            animatorController.Play("in air");
+            ApplyRisingForce();
         }
         
-        // when grinding we don't want to think we are falling
-        else if (verticalVelocity < 0 && PlayerProperties.Instance.playerState != PlayerProperties.PlayerState.Grinding)
+        else if (verticalVelocity < 0 )
         {
             // Player is moving downwards (falling)
-            PlayerProperties.Instance.ChangeState(PlayerProperties.PlayerState.Falling);
             ApplyGravityForce();
-            animatorController.Play("in air");
+        }
+        
+        // Now handle state-changing logic
+        UpdatePlayerState(verticalVelocity);
+    }
+
+    private void UpdatePlayerState(float verticalVelocity)
+    {
+        var playerProps = PlayerProperties.Instance;
+        var currentState = playerProps.playerState;
+
+        if (currentState == PlayerProperties.PlayerState.Grounded)
+        {
+            PlayAnimIfNotAlreadyPlaying("Skating");
+        }
+        else if (verticalVelocity > 0 && currentState != PlayerProperties.PlayerState.Rising)
+        {
+            // Player is moving upwards (jumping)
+            playerProps.ChangeState(PlayerProperties.PlayerState.Rising);
+        
+            PlayAnimIfNotAlreadyPlaying("in air");
+        }
+        else if (verticalVelocity < 0 && currentState != PlayerProperties.PlayerState.Grinding && currentState != PlayerProperties.PlayerState.Falling)
+        {
+            // Player is moving downwards (falling) and not grinding
+            playerProps.ChangeState(PlayerProperties.PlayerState.Falling);
+
+            PlayAnimIfNotAlreadyPlaying("in air");
         }
     }
 
+    private void PlayAnimIfNotAlreadyPlaying(string animName)
+    {
+        if (!animatorController.GetCurrentAnimatorStateInfo(0).IsName(animName))
+        {
+            animatorController.Play(animName);
+        }
+    }
+    
     private void ApplyGravityForce()
     {
         Vector3 gravityForce = Vector3.down * fallMultiplier;
@@ -87,10 +113,10 @@ public class PlayerControls : MonoBehaviour
         rb.AddForce(popForce, ForceMode.Impulse);
     }
     // Runs in update
-    private void ApplyJumpForce()
+    private void ApplyRisingForce()
     {
-        Vector3 jumpForce = Vector3.up * jumpMultiplier;
-        rb.AddForce(jumpForce, ForceMode.Acceleration);
+        Vector3 risingForce = Vector3.up * jumpMultiplier;
+        rb.AddForce(risingForce, ForceMode.Acceleration);
     }
 
     // On held

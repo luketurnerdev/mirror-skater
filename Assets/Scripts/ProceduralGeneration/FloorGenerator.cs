@@ -69,7 +69,6 @@ public class FloorGenerator : MonoBehaviour
             
             // The index of the block where we want to spawn a new block
             // When user crosses it
-            // private int blockIndexForNewSpawn = segmentCount - 5;
 
             int blockIndexForNewSpawn = segmentCount - howManyBlocksBackToSpawnNewBlocks;
             if (i == blockIndexForNewSpawn)

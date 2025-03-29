@@ -1133,8 +1133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896a958c6a39b6b45945152bf3256313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreController: {fileID: 0}
-  isGrinding: 0
 --- !u!4 &1452099086
 Transform:
   m_ObjectHideFlags: 0
@@ -1571,9 +1569,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3003400087665795353, guid: a9949fc0f0890784284c1b71ba4fa474, type: 3}
+      propertyPath: moveSpeed
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3003400087665795353, guid: a9949fc0f0890784284c1b71ba4fa474, type: 3}
+      propertyPath: olliePopForce
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3003400087665795353, guid: a9949fc0f0890784284c1b71ba4fa474, type: 3}
+      propertyPath: fallMultiplier
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3003400087665795353, guid: a9949fc0f0890784284c1b71ba4fa474, type: 3}
+      propertyPath: jumpMultiplier
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3003400087665795353, guid: a9949fc0f0890784284c1b71ba4fa474, type: 3}
       propertyPath: animatorController
       value: 
       objectReference: {fileID: 1499057580}
+    - target: {fileID: 3003400087665795353, guid: a9949fc0f0890784284c1b71ba4fa474, type: 3}
+      propertyPath: jumpingMaxVelocity
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8609597081106274815, guid: a9949fc0f0890784284c1b71ba4fa474, type: 3}
       propertyPath: m_LocalScale.x
       value: 4

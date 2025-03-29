@@ -123,20 +123,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a145b4bc80af148871a7b73b31fdab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
-  crouchAmount: 0
-  jumpForce: 12
-  isCrouching: 0
-  crouchingMat: {fileID: 2100000, guid: 3f2492d557274494194f4900e8e7c463, type: 2}
-  normalMat: {fileID: 2100000, guid: c9ba1a96aa0a43542863acf657940966, type: 2}
-  isFalling: 0
-  isJumping: 0
-  fallMultiplier: 5
-  jumpMultiplier: 2
-  jumpingMaxVelocity: 5
-  olliePopForce: 7
-  hasOlliePopped: 0
-  velocityDescentAmount: 2
+  moveSpeed: 80
+  fallMultiplier: 45
+  jumpMultiplier: -50
+  olliePopForce: 40
+  animatorController: {fileID: 0}
 --- !u!54 &5885446331531964685
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -177,3 +168,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  playerState: 0
