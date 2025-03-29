@@ -13,19 +13,12 @@ public class DetectPlayerGrounded : MonoBehaviour
                 Debug.LogError("PlayerControls component not found on the player object");
                 return;
             }
-            playerControls.SetIsGrounded(true);
+            playerControls.SetIsGrounded();
         }
     }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         playerControls = FindObjectOfType<PlayerControls>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -3,10 +3,7 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     public Transform player;
-    void Start()
-    {
-        
-    }
+    public float xOffset = 20f;
 
     void Update()
     {
@@ -16,6 +13,7 @@ public class FollowPlayer : MonoBehaviour
     void Follow()
     {
         // Only follow in the x plane
-        transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
+        // add offset to 
+        transform.position = new Vector3(player.position.x + xOffset, transform.position.y, transform.position.z);
     }
 }

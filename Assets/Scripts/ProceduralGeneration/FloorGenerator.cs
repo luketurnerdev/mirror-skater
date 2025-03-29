@@ -9,8 +9,13 @@ public class FloorGenerator : MonoBehaviour
     public Material blueFoorMat;
     
     // max amount of segments
-    public int segmentCount = 10;
+    private int segmentCount = 10;
+    
+    // Actual length of each block (determined at runtime)
     private float segmentLength;
+    [SerializeField] private int howManyBlocksBackToSpawnNewBlocks;
+    
+    // Where to spawn the next segment
     private Vector2 currentSegmentSpawnPos = Vector2.zero;
 
     private void Start()
@@ -58,10 +63,16 @@ public class FloorGenerator : MonoBehaviour
             currentSegmentSpawnPos.x += segmentLength;
             
             AlternateFloorMaterial(segment, i);
-
-            SometimesSpawnRailOnSegment(segmentData, segment);
+            // Add stuff to the segment
             
-            if (i == segmentCount-4)
+            SometimesAddStuffToSegment(segmentData, segment);
+            
+            // The index of the block where we want to spawn a new block
+            // When user crosses it
+            // private int blockIndexForNewSpawn = segmentCount - 5;
+
+            int blockIndexForNewSpawn = segmentCount - howManyBlocksBackToSpawnNewBlocks;
+            if (i == blockIndexForNewSpawn)
             {
                 Instantiate(colliderPrefab, segment.transform);
             }
@@ -69,10 +80,12 @@ public class FloorGenerator : MonoBehaviour
         
         // Garbage Collection
         CleanupPreviousBlocks();
-        
-        
     }
 
+    void SometimesAddStuffToSegment(FloorSegmentData data, GameObject parent)
+    {
+        SometimesSpawnRailOnSegment(data, parent);
+    }
     void SometimesSpawnRailOnSegment(FloorSegmentData data, GameObject parent)
     {
         data.hasRail = Random.value > 0.5f;

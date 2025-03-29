@@ -8,18 +8,13 @@ public class PlayerControls : MonoBehaviour
     public float moveSpeed = 5f;
     public float crouchAmount = 0.5f;
     public float jumpForce = 10f;
-    public bool isCrouching;
     private Rigidbody rb;
     public Material crouchingMat;
     public Material normalMat;
-    public bool isFalling;
-    public bool isJumping;
     public float fallMultiplier = 5f;
     public float jumpMultiplier = 5f;
     public float jumpingMaxVelocity = 5f;
     public float olliePopForce = 5f;
-    public bool hasOlliePopped;
-    public bool isGrounded;
     public Animator animatorController;
     [FormerlySerializedAs("velocityDescentTime")] public float velocityDescentAmount;
 
@@ -28,7 +23,6 @@ public class PlayerControls : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         MoveHorizontally();
@@ -44,39 +38,38 @@ public class PlayerControls : MonoBehaviour
         }
     }
     
-    public void SetIsGrounded(bool grounded)
+    public void SetIsGrounded()
     {
-        isGrounded = grounded;
+        // If we are actually crouching when we interact with the ground, set crouch instead
+        if (Input.GetKey(KeyCode.Space))
+        {
+            PlayerProperties.Instance.ChangeState(PlayerProperties.PlayerState.Crouching);
+            return;
+        }
+        PlayerProperties.Instance.ChangeState(PlayerProperties.PlayerState.Grounded);
     }
 
     private void FixedUpdate()
     {
-        Debug.Log("IsGrounded: " + isGrounded);
         float verticalVelocity = rb.linearVelocity.y;
 
-        if (isGrounded)
+        if (PlayerProperties.Instance.playerState == PlayerProperties.PlayerState.Grounded)
         {
-            // Player is on the ground, reset booleans
-            Debug.Log("Player is grounded");
-            isJumping = false;
-            isFalling = false;
             animatorController.Play("Skating");
         }
         else if (verticalVelocity > 0)
         {
             // Player is moving upwards (jumping)
-            Debug.Log("Player is jumping");
-            isJumping = true;
-            isFalling = false;
+            PlayerProperties.Instance.ChangeState(PlayerProperties.PlayerState.Rising);
             ApplyJumpForce();
             animatorController.Play("in air");
         }
-        else if (verticalVelocity < 0)
+        
+        // when grinding we don't want to think we are falling
+        else if (verticalVelocity < 0 && PlayerProperties.Instance.playerState != PlayerProperties.PlayerState.Grinding)
         {
             // Player is moving downwards (falling)
-            Debug.Log("Player is falling");
-            isJumping = false;
-            isFalling = true;
+            PlayerProperties.Instance.ChangeState(PlayerProperties.PlayerState.Falling);
             ApplyGravityForce();
             animatorController.Play("in air");
         }
@@ -103,24 +96,16 @@ public class PlayerControls : MonoBehaviour
     // On held
     void Crouch()
     {
-        if (isCrouching) return;
-        gameObject.GetComponent<MeshRenderer>().material = crouchingMat;
-
-        // Simulate crouching by moving downward
-        isCrouching = true;
+        if (PlayerProperties.Instance.playerState == PlayerProperties.PlayerState.Crouching) return;
+        
+        PlayerProperties.Instance.ChangeState(PlayerProperties.PlayerState.Crouching);
     }
 
     // On release
     void Jump()
     {
-        // Dont allow double jumps
-        if (!isGrounded) return;
-        
-        isCrouching = false;
-        isGrounded = false;
-        gameObject.GetComponent<MeshRenderer>().material = normalMat;
-        
-        isJumping = true;
+        // Don't allow double jumps
+        if (PlayerProperties.Instance.playerState == PlayerProperties.PlayerState.Grounded) return;
         
         // On jump, give an extra boost
         // before adding acceleration
