@@ -3,14 +3,11 @@ using UnityEngine;
 [System.Serializable]
 public class FloorSegmentData
 {
-    // Floor blocks
-    public GameObject floorPrefab;
-    
     // Rail stuff
-    public GameObject railPrefab;
     public bool hasRail;
-    public Transform railSpawnPoint;
-    
+   
+    // Ramp stuff
+    public bool hasRamp;
     
     public bool hasHazard;
 }

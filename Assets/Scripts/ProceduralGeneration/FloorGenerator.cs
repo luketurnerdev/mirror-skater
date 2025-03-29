@@ -2,11 +2,19 @@ using UnityEngine;
 
 public class FloorGenerator : MonoBehaviour
 {
-    public FloorSegmentData segmentPrefab;
+    public GameObject floorPrefab;
+    public GameObject railPrefab;
+    public GameObject rampPrefab;
     public GameObject floorSegmentsParent;
     public GameObject colliderPrefab;
     public Material redFloorMat; 
     public Material blueFoorMat;
+
+    public bool hasRails = true;
+    public bool hasRamps = true;
+    
+    public float railSpawnChance = 0.5f;
+    public float rampSpawnChance = 0.5f;
     
     // max amount of segments
     private int segmentCount = 10;
@@ -23,6 +31,10 @@ public class FloorGenerator : MonoBehaviour
         GenerateFloor();
     }
 
+    public void ResetGenerationOnRespawn()
+    {
+        currentSegmentSpawnPos = Vector2.zero;
+    }
     public void CleanupPreviousBlocks()
     {
         // Find first 10 children of a floorSegmentsParent and delete them
@@ -53,19 +65,22 @@ public class FloorGenerator : MonoBehaviour
         // Generate x amount of floor blocks
         for (int i = 0; i < segmentCount; i++)
         {
-            var segmentData = segmentPrefab;
-
-            GameObject segment = Instantiate(segmentData.floorPrefab, currentSegmentSpawnPos, Quaternion.identity);
+            // Instantiate new data class instance and associated gameobject
+            FloorSegmentData segmentData = new FloorSegmentData();
+            GameObject segment = Instantiate(floorPrefab, currentSegmentSpawnPos, Quaternion.identity);
+            
+            // Set parent
             segment.transform.parent = floorSegmentsParent.transform;
-    
-            segmentLength = segment.GetComponent<Renderer>().bounds.size.x;
+            
             // Move the spawn position to the right by the length of the segment
+            segmentLength = segment.GetComponent<Renderer>().bounds.size.x;
             currentSegmentSpawnPos.x += segmentLength;
             
+            // Change material for clarity
             AlternateFloorMaterial(segment, i);
-            // Add stuff to the segment
             
-            // SometimesAddStuffToSegment(segmentData, segment);
+            // Add stuff randomly to the segment
+            SometimesAddStuffToSegment(segmentData, segment);
             
             // The index of the block where we want to spawn a new block
             // When user crosses it
@@ -81,16 +96,36 @@ public class FloorGenerator : MonoBehaviour
         CleanupPreviousBlocks();
     }
 
-    void SometimesAddStuffToSegment(FloorSegmentData data, GameObject parent)
+    void SometimesAddStuffToSegment(FloorSegmentData data, GameObject segment)
     {
-        SometimesSpawnRailOnSegment(data, parent);
+        SometimesSpawnRailOnSegment(data, segment);
+        SometimesSpawnRampOnSegment(data, segment);
+    }
+
+    void SometimesSpawnRampOnSegment(FloorSegmentData data, GameObject parent)
+    {
+        if (data.hasRail || data.hasRamp || !hasRamps) return;
+        
+        bool shouldSpawnRamp = Random.value > rampSpawnChance;
+        if (!shouldSpawnRamp) return;
+        
+        data.hasRamp = true;
+        GameObject ramp = Instantiate(rampPrefab, currentSegmentSpawnPos, rampPrefab.transform.rotation);
+        ramp.transform.parent = parent.transform;
+        
+        // Move it up a bit
+        ramp.transform.localPosition += new Vector3(0, 0.5f, 0);
     }
     void SometimesSpawnRailOnSegment(FloorSegmentData data, GameObject parent)
     {
-        data.hasRail = Random.value > 0.5f;
-        if (!data.hasRail) return;
+        if (data.hasRail || data.hasRamp || !hasRails) return;
         
-        GameObject rail = Instantiate(data.railPrefab, currentSegmentSpawnPos, Quaternion.identity);
+        bool shouldSpawnRail = Random.value > railSpawnChance;
+        if (!shouldSpawnRail) return;
+        
+        data.hasRail = true;
+        
+        GameObject rail = Instantiate(railPrefab, currentSegmentSpawnPos, Quaternion.identity);
         rail.transform.parent = parent.transform;
         
         // Move it up a bit
