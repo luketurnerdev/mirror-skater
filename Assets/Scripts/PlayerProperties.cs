@@ -108,6 +108,18 @@ public class PlayerProperties : MonoBehaviour
         }
     }
 
+    public bool IsNotAllowedToJump()
+    {
+        return playerState == PlayerState.Rising ||
+            playerState == PlayerState.Falling ||
+            playerState == PlayerState.Dead;
+    }
+    
+    public bool IsNotAllowedToCrouch()
+    {
+        // All of the previous states, plus if we are already crouching.
+        return IsNotAllowedToJump() || playerState == PlayerState.Crouching;
+    }
     public bool IsFallingBufferActive()
     {
         return isFallingBufferActive;

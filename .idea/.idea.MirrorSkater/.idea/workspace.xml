@@ -6,25 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="37ca3424-1048-46f0-9174-90c30654d7af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MirrorSkater/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MirrorSkater/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DetectGrinding.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DetectGrinding.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DetectLastBlock.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DetectLastBlock.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DetectPlayerGrounded.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DetectPlayerGrounded.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FollowPlayer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FollowPlayer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GrindController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GrindController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerControls.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerControls.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScoreController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScoreController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DetectGrinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DetectGrinding.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerControls.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerProperties.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerProperties.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UIController.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +120,7 @@
       <updated>1743130121496</updated>
       <workItem from="1743130121497" duration="1936000" />
       <workItem from="1743145552642" duration="21074000" />
-      <workItem from="1743210394174" duration="3580000" />
+      <workItem from="1743210394174" duration="4404000" />
     </task>
     <servers />
   </component>
@@ -161,10 +146,10 @@
           <line>81</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\Scripts\ProceduralGeneration\FloorGenerator.cs" containingFunctionPresentation="Method 'GenerateFloor'">
             <startOffsets>
-              <option value="2760" />
+              <option value="2757" />
             </startOffsets>
             <endOffsets>
-              <option value="2783" />
+              <option value="2780" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="7" />

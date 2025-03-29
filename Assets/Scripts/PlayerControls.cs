@@ -96,8 +96,7 @@ public class PlayerControls : MonoBehaviour
     // On held
     void Crouch()
     {
-        if (PlayerProperties.Instance.playerState == PlayerProperties.PlayerState.Crouching) return;
-        
+        if (PlayerProperties.Instance.IsNotAllowedToCrouch()) return;
         PlayerProperties.Instance.ChangeState(PlayerProperties.PlayerState.Crouching);
     }
 
@@ -105,7 +104,7 @@ public class PlayerControls : MonoBehaviour
     void Jump()
     {
         // Don't allow double jumps
-        if (PlayerProperties.Instance.playerState == PlayerProperties.PlayerState.Grounded) return;
+        if (PlayerProperties.Instance.IsNotAllowedToJump()) return;
         
         // On jump, give an extra boost
         // before adding acceleration
