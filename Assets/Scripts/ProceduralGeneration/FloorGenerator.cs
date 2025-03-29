@@ -17,7 +17,7 @@ public class FloorGenerator : MonoBehaviour
     public float rampSpawnChance = 0.5f;
     
     // max amount of segments
-    private int segmentCount = 10;
+    public int segmentCount = 10;
     
     // Actual length of each block (determined at runtime)
     private float segmentLength;
@@ -37,6 +37,8 @@ public class FloorGenerator : MonoBehaviour
     }
     public void CleanupPreviousBlocks()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        
         // Find first 10 children of a floorSegmentsParent and delete them
         DestroyFirstTenChildren(floorSegmentsParent.transform);
     }

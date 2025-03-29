@@ -1278,16 +1278,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd443dad7c1dab45a17a981cea38089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  segmentPrefab:
-    floorPrefab: {fileID: 1845780515495359070, guid: ada010109d4b45f4c8c5371f0410f57f, type: 3}
-    railPrefab: {fileID: 4710501576663863778, guid: 1385ec1226e3bc9428d7db640656f2f7, type: 3}
-    hasRail: 0
-    railSpawnPoint: {fileID: 0}
-    hasHazard: 0
+  floorPrefab: {fileID: 1845780515495359070, guid: ada010109d4b45f4c8c5371f0410f57f, type: 3}
+  railPrefab: {fileID: 4710501576663863778, guid: 1385ec1226e3bc9428d7db640656f2f7, type: 3}
+  rampPrefab: {fileID: 2173215258752973156, guid: cef8bce9f3d6cc44b9ab174bac614c19, type: 3}
   floorSegmentsParent: {fileID: 425012887}
   colliderPrefab: {fileID: 841702999066326216, guid: ef8dd1d42d6d7b740a1e502006b7cbb3, type: 3}
   redFloorMat: {fileID: 2100000, guid: 77052cfaff2581a468363768f718171b, type: 2}
   blueFoorMat: {fileID: 2100000, guid: b4960cf820de2e147a7d84750c513978, type: 2}
+  hasRails: 1
+  hasRamps: 1
+  railSpawnChance: 0.5
+  rampSpawnChance: 0.5
   howManyBlocksBackToSpawnNewBlocks: 4
 --- !u!1001 &1499057578
 PrefabInstance:
