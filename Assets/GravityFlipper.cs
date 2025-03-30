@@ -22,10 +22,6 @@ public class GravityFlipper : MonoBehaviour
 
         FindPlayer();
 
-        if (playerTransform != null)
-        {
-            // currentZRotation = playerTransform.eulerAngles.z; // ✅ Set to current rotation
-        }
     }
 
     void Update()
@@ -73,6 +69,11 @@ public class GravityFlipper : MonoBehaviour
         }
 
         rotationCoroutine = StartCoroutine(RotatePlayerByZ(180f, 0.4f));
+    }
+    
+    public bool IsUpsideDown()
+    {
+        return isUpsideDown;
     }
 
 

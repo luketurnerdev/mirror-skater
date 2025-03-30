@@ -15,17 +15,19 @@ public class DetectPlayerGrounded : MonoBehaviour
                 return;
             }
 
-            // Set grounded state
             playerControls.SetIsGrounded();
 
-            // Re-enable gravity flip
             GravityFlipper flipper = FindObjectOfType<GravityFlipper>();
             if (flipper != null)
             {
                 flipper.EnableFlip();
+
+                // ✅ Snap upright when landing
+                playerControls.SnapUprightToSurface(flipper.IsUpsideDown());
             }
         }
     }
+
 
     void Start()
     {

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerControls : MonoBehaviour
 {
@@ -17,10 +17,12 @@ public class PlayerControls : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        
     }
 
     void Update()
-    {
+    {   
+    
         MoveHorizontally();
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -31,6 +33,7 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             Jump();
+            MaybeDoRandomTrick();
         }
     }
     
@@ -146,4 +149,102 @@ public class PlayerControls : MonoBehaviour
         Vector3 horizontalMovement = new Vector3(moveSpeed * Time.deltaTime, 0, 0);
         rb.MovePosition(transform.position + horizontalMovement);
     }
+    
+    public void DoFrontflip(float duration = 1f)
+    {
+        StartCoroutine(RotatePlayer(Vector3.right, 360f, duration));
+    }
+
+    public void DoBackflip(float duration = 1f)
+    {
+        StartCoroutine(RotatePlayer(Vector3.right, -360f, duration));
+    }
+
+    public void SpinRight(float duration = 1f)
+    {
+        StartCoroutine(RotatePlayer(Vector3.up, 360f, duration));
+    }
+
+    public void SpinLeft(float duration = 1f)
+    {
+        StartCoroutine(RotatePlayer(Vector3.up, -360f, duration));
+    }
+    
+    private bool isRotating = false;
+    
+
+    public void SnapUprightToSurface(bool isUpsideDown)
+    {
+        Vector3 upFacing = isUpsideDown ? Vector3.down : Vector3.up;
+        Quaternion uprightRotation = Quaternion.LookRotation(Vector3.forward, upFacing);
+        transform.rotation = uprightRotation;
+    }
+
+
+    public IEnumerator RotatePlayer(Vector3 axis, float degrees, float duration)
+    {
+        if (isRotating) yield break;
+        isRotating = true;
+
+        float elapsed = 0f;
+        float totalRotation = 0f;
+        float lastFrameRotation = 0f;
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+            float currentRotation = Mathf.Lerp(0f, degrees, t);
+            float deltaRotation = currentRotation - lastFrameRotation;
+
+            transform.Rotate(axis, deltaRotation, Space.Self);
+
+            lastFrameRotation = currentRotation;
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Apply final leftover rotation in case of floating point drift
+        float finalDelta = degrees - lastFrameRotation;
+        transform.Rotate(axis, finalDelta, Space.Self);
+
+        isRotating = false;
+    }
+
+
+    
+    public void MaybeDoRandomTrick()
+    {
+        Debug.Log("MaybeDoRandomTrick called");
+        
+        if (isRotating) return; // don't start another if already flipping/spinning
+
+        float chance = Random.value; // returns 0.0 to 1.0
+
+        // if (chance < 0.7f)
+        // {
+        //     // 70% chance: do nothing
+        //     return;
+        // }
+
+        // 30% chance: do a random trick
+        int trickIndex = Random.Range(0, 4); // 0 to 3
+
+        switch (trickIndex)
+        {
+            case 0:
+                DoFrontflip();
+                break;
+            case 1:
+                DoBackflip();
+                break;
+            case 2:
+                SpinLeft();
+                break;
+            case 3:
+                SpinRight();
+                break;
+        }
+    }
+    
+
 }
