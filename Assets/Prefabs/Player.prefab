@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a145b4bc80af148871a7b73b31fdab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 50
+  moveSpeed: 60
   fallMultiplier: 45
   jumpMultiplier: -45
   olliePopForce: 30

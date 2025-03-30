@@ -7,6 +7,12 @@ public class RampPhysics : MonoBehaviour
     public float rampClimbSpeedMultiplier = 1.2f;  // How fast the player moves when climbing the ramp
     public float reducedGravityMultiplier = 0.3f;  // How much gravity is reduced while on the ramp
     
+    private PlayerControls playerControls;
+    
+    private void Awake()
+    {
+        playerControls = FindObjectOfType<PlayerControls>();
+    }
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -31,6 +37,7 @@ public class RampPhysics : MonoBehaviour
 
                 // Apply force to push the player along the ramp surface
                 playerRb.AddForce(rampDirection * rampClimbSpeedMultiplier, ForceMode.Force);
+                
             }
         }
     }
@@ -45,6 +52,12 @@ public class RampPhysics : MonoBehaviour
                 // When the player leaves the ramp, apply an upward and forward force
                 Vector3 launchDirection = (Vector3.up + playerRb.transform.forward).normalized;
                 playerRb.AddForce(launchDirection * rampLaunchForce, ForceMode.Impulse);
+
+                
+                if (playerControls == null) {playerControls = FindObjectOfType<PlayerControls>();}
+
+                // Give a permanent speed boost
+                playerControls.moveSpeed += 0.05f;
 
                 // Set the player's state to Rising
                 PlayerProperties.Instance.ChangeState(PlayerProperties.PlayerState.Rising);

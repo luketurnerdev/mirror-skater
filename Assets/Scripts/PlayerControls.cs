@@ -1,12 +1,9 @@
-using System;
-using UnityEditor.Animations;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerControls : MonoBehaviour
 {
-    public float moveSpeed = 30f;
+    public float moveSpeed = 60f;
     private Rigidbody rb;
     
     // Jump physics

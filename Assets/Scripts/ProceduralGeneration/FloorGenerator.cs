@@ -12,6 +12,9 @@ public class FloorGenerator : MonoBehaviour
     public GameObject colliderPrefab;
     public Material redFloorMat; 
     public Material blueFoorMat;
+    
+    public bool lastBlockHadRamp = false;
+    public bool lastBlockHadRail = false;
 
     public bool hasRails = true;
     public bool hasRamps = true;
@@ -70,7 +73,7 @@ public class FloorGenerator : MonoBehaviour
     {
         // At the start of the game, generate x amount of floors (say 10)
         // If the player hits the last block (or maybe the last 2 blocks), generate another x amount of floors
-
+       
         // Generate x amount of floor blocks
         for (int i = 0; i < segmentCount; i++)
         {
@@ -119,14 +122,19 @@ public class FloorGenerator : MonoBehaviour
         if (data.hasRail || data.hasRamp || !hasRamps) return;
         
         bool shouldSpawnRamp = Random.value < (rampSpawnChancePercentage / 100);
-        if (!shouldSpawnRamp) return;
+        if (!shouldSpawnRamp || lastBlockHadRamp)
+        {
+            lastBlockHadRamp = false;
+            return;
+        }
         
+        lastBlockHadRamp = true;
         data.hasRamp = true;
         GameObject ramp = Instantiate(rampPrefab, currentSegmentSpawnPos, rampPrefab.transform.rotation);
         ramp.transform.parent = parent.transform;
         
         // Move it up a bit
-        ramp.transform.localPosition += new Vector3(0, 0.5f, 0);
+        ramp.transform.localPosition += new Vector3(-0.3f, 0.5f, 0);
     }
     void SometimesSpawnRailOnSegment(FloorSegmentData data, GameObject parent)
     {
@@ -135,8 +143,13 @@ public class FloorGenerator : MonoBehaviour
         // if the random value is greater than the spawn chance as a percentage, spawn the rail
         
         bool shouldSpawnRail = Random.value < (railSpawnChancePercentage / 100);
-        if (!shouldSpawnRail) return;
+        if (!shouldSpawnRail || lastBlockHadRail)
+        {
+            lastBlockHadRail = false;
+            return;
+        }
         
+        lastBlockHadRail = true;
         data.hasRail = true;
         
         GameObject rail = Instantiate(railPrefab, currentSegmentSpawnPos, Quaternion.identity);
