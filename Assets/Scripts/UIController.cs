@@ -17,12 +17,6 @@ public class UIController : MonoBehaviour
         gameOverCanvas.SetActive(false);
         UICanvas.SetActive(true);
     }
-    
-    public void Respawn()
-    {
-        HideGameOverScreen();
-        StartCoroutine(PlayerProperties.Instance.IgnorePhysicsOnRespawn());
-    }
 
     private void ResetStatics()
     {

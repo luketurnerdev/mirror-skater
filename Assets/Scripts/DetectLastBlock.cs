@@ -16,7 +16,7 @@ public class DetectLastBlock : MonoBehaviour
         Debug.Log("collider fire");
         if (other.gameObject.CompareTag("Player"))
         {
-            floorSegmentData.GenerateFloor();
+            floorSegmentData.GenerateFloors();
         }
     }
 }

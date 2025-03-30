@@ -41,7 +41,6 @@ public class PlayerProperties : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject); // Optional: Keeps this instance across scenes
     }
     
     void Start()
@@ -56,15 +55,7 @@ public class PlayerProperties : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>();
         // rb.interpolation = RigidbodyInterpolation.Interpolate;
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            StartCoroutine(IgnorePhysicsOnRespawn());
-        }
-    }
-
+    
     public void ChangeState(PlayerState newState)
     {
         if (newState == PlayerState.Falling)
@@ -148,47 +139,4 @@ public class PlayerProperties : MonoBehaviour
         // show game over screen / score / respawn button / leaderboard button
     }
     
-    public IEnumerator IgnorePhysicsOnRespawn()
-    {
-        GameObject player = GameObject.FindWithTag("Player");
-        // Reset position to a safe location
-        player.transform.position = new Vector3(0, 1, 0);  // Example respawn position
-    
-        // Disable the player's collider to prevent immediate collisions
-        Collider playerCollider = player.GetComponent<Collider>();
-        if (playerCollider != null)
-        {
-            playerCollider.enabled = false;
-        }
-
-        // Optionally, disable the Rigidbody temporarily to ensure no physics interactions
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.isKinematic = true; // Prevent physics interactions
-            rb.linearVelocity = Vector3.zero; // Clear any existing velocity
-        }
-
-        // Reset physics simulation if Time.timeScale was set to 0
-        Time.timeScale = 1;
-
-        // Wait for a small amount of time to allow physics to update
-        yield return new WaitForFixedUpdate();
-        yield return new WaitForFixedUpdate();
-
-        // Re-enable the player's collider and Rigidbody
-        if (playerCollider != null)
-        {
-            playerCollider.enabled = true;
-        }
-        if (rb != null)
-        {
-            rb.isKinematic = false;
-        }
-    }
-    
-    public void Respawn()
-    {
-        StartCoroutine(IgnorePhysicsOnRespawn());
-    }
 }

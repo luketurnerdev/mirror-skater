@@ -6,7 +6,7 @@ public class RampPhysics : MonoBehaviour
     public float rampLaunchForce = 15f;  // How hard the player is launched off the ramp
     public float rampClimbSpeedMultiplier = 1.2f;  // How fast the player moves when climbing the ramp
     public float reducedGravityMultiplier = 0.3f;  // How much gravity is reduced while on the ramp
-
+    
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))

@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FloorGenerator : MonoBehaviour
 {
+    public List<GameObject> floorSegments = new List<GameObject>();
     public GameObject floorPrefab;
     public GameObject railPrefab;
     public GameObject rampPrefab;
@@ -25,11 +27,6 @@ public class FloorGenerator : MonoBehaviour
     
     // Where to spawn the next segment
     private Vector2 currentSegmentSpawnPos = Vector2.zero;
-
-    private void Start()
-    {
-        GenerateFloor();
-    }
 
     public void ResetGenerationOnRespawn()
     {
@@ -59,7 +56,16 @@ public class FloorGenerator : MonoBehaviour
         }
     }
 
-    public void GenerateFloor()
+    public void ClearAllBlocks()
+    {
+        foreach (GameObject segment in floorSegments)
+        {
+            Destroy(segment);
+        }
+        floorSegments.Clear();
+    }
+
+    public void GenerateFloors()
     {
         // At the start of the game, generate x amount of floors (say 10)
         // If the player hits the last block (or maybe the last 2 blocks), generate another x amount of floors
@@ -92,6 +98,9 @@ public class FloorGenerator : MonoBehaviour
             {
                 Instantiate(colliderPrefab, segment.transform);
             }
+            
+            // Add the segment to the list
+            floorSegments.Add(segment);
         }
         
         // Garbage Collection

@@ -17,6 +17,12 @@ public class ScoreController : MonoBehaviour
      * Add extra points for doing tricks
      */
 
+
+    public void ResetScore()
+    {
+        playerScore = 0;
+        scoreText.text = "Score: " + Mathf.Round(playerScore);
+    }
     public void IncreaseMultiplierForGrinding()
     {
         scoreMultiplier += grindingMultiplierIncrement;
