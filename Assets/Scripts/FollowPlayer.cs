@@ -4,6 +4,7 @@ public class FollowPlayer : MonoBehaviour
 {
     public Transform assignedPlayer;
     public float xOffset = 20f;
+    public float yOffset = 5f;
 
     void Update()
     {
@@ -22,6 +23,6 @@ public class FollowPlayer : MonoBehaviour
         // Only follow in the x plane
         // add offset to 
         if (assignedPlayer == null) return;
-        transform.position = new Vector3(assignedPlayer.position.x + xOffset, transform.position.y, transform.position.z);
+        transform.position = new Vector3(assignedPlayer.position.x + xOffset, transform.position.y + yOffset, transform.position.z);
     }
 }

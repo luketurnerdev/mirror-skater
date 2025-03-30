@@ -73,7 +73,7 @@ public class PlayerControls : MonoBehaviour
         var playerProps = PlayerProperties.Instance;
         var currentState = playerProps.playerState;
 
-        if (currentState == PlayerProperties.PlayerState.Grounded)
+        if (currentState == PlayerProperties.PlayerState.Grounded || currentState == PlayerProperties.PlayerState.Crouching)
         {
             PlayAnimIfNotAlreadyPlaying("Skating");
         }
@@ -125,7 +125,7 @@ public class PlayerControls : MonoBehaviour
     // On held
     void Crouch()
     {
-        // if (PlayerProperties.Instance.IsNotAllowedToCrouch()) return;
+        if (PlayerProperties.Instance.IsNotAllowedToCrouch()) return;
         PlayerProperties.Instance.ChangeState(PlayerProperties.PlayerState.Crouching);
     }
 
@@ -133,7 +133,7 @@ public class PlayerControls : MonoBehaviour
     void Jump()
     {
         // Don't allow double jumps
-        // if (PlayerProperties.Instance.IsNotAllowedToJump()) return;
+        if (PlayerProperties.Instance.IsNotAllowedToJump()) return;
         
         // On jump, give an extra boost
         // before adding acceleration
