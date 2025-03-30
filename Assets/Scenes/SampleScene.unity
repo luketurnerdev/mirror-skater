@@ -687,7 +687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assignedPlayer: {fileID: 0}
-  xOffset: 15
+  xOffset: 20
   yOffset: 0
 --- !u!1 &410087039
 GameObject:
@@ -1219,8 +1219,8 @@ MonoBehaviour:
   blueFoorMat: {fileID: 2100000, guid: b4960cf820de2e147a7d84750c513978, type: 2}
   hasRails: 1
   hasRamps: 1
-  railSpawnChance: 1
-  rampSpawnChance: 0
+  railSpawnChancePercentage: 50
+  rampSpawnChancePercentage: 80
   segmentCount: 10
   howManyBlocksBackToSpawnNewBlocks: 4
 --- !u!114 &1452099090

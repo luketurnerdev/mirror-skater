@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FloorGenerator : MonoBehaviour
 {
@@ -15,8 +16,8 @@ public class FloorGenerator : MonoBehaviour
     public bool hasRails = true;
     public bool hasRamps = true;
     
-    public float railSpawnChance = 0.5f;
-    public float rampSpawnChance = 0.5f;
+    [FormerlySerializedAs("railSpawnChance")] public float railSpawnChancePercentage = 25;
+    [FormerlySerializedAs("rampSpawnChance")] public float rampSpawnChancePercentage = 50;
     
     // max amount of segments
     public int segmentCount = 10;
@@ -117,7 +118,7 @@ public class FloorGenerator : MonoBehaviour
     {
         if (data.hasRail || data.hasRamp || !hasRamps) return;
         
-        bool shouldSpawnRamp = Random.value > rampSpawnChance;
+        bool shouldSpawnRamp = Random.value < (rampSpawnChancePercentage / 100);
         if (!shouldSpawnRamp) return;
         
         data.hasRamp = true;
@@ -131,7 +132,9 @@ public class FloorGenerator : MonoBehaviour
     {
         if (data.hasRail || data.hasRamp || !hasRails) return;
         
-        bool shouldSpawnRail = Random.value > railSpawnChance;
+        // if the random value is greater than the spawn chance as a percentage, spawn the rail
+        
+        bool shouldSpawnRail = Random.value < (railSpawnChancePercentage / 100);
         if (!shouldSpawnRail) return;
         
         data.hasRail = true;

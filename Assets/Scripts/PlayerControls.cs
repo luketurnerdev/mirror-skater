@@ -98,6 +98,7 @@ public class PlayerControls : MonoBehaviour
 
     private void PlayAnimIfNotAlreadyPlaying(string animName)
     {
+        if (animatorController == null) return;
         if (!animatorController.GetCurrentAnimatorStateInfo(0).IsName(animName))
         {
             animatorController.Play(animName);
