@@ -104,21 +104,24 @@ public class PlayerControls : MonoBehaviour
     
     private void ApplyGravityForce()
     {
-        Vector3 gravityForce = Vector3.down * fallMultiplier;
+        Vector3 gravityForce = Physics.gravity.normalized * fallMultiplier;
         rb.AddForce(gravityForce, ForceMode.Acceleration);
     }
 
+
     private void AddOlliePopForce()
     {
-        Vector3 popForce = new Vector3(0, olliePopForce, 0);
+        Vector3 popForce = -Physics.gravity.normalized * olliePopForce;
         rb.AddForce(popForce, ForceMode.Impulse);
     }
+
     // Runs in update
     private void ApplyRisingForce()
     {
-        Vector3 risingForce = Vector3.up * jumpMultiplier;
+        Vector3 risingForce = -Physics.gravity.normalized * jumpMultiplier;
         rb.AddForce(risingForce, ForceMode.Acceleration);
     }
+
 
     // On held
     void Crouch()

@@ -1146,6 +1146,7 @@ GameObject:
   - component: {fileID: 1452099088}
   - component: {fileID: 1452099089}
   - component: {fileID: 1452099090}
+  - component: {fileID: 1452099091}
   m_Layer: 0
   m_Name: Controllers
   m_TagString: Untagged
@@ -1239,6 +1240,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 977245439721804105, guid: abae4252ad93d824f87b23ba70bd61d5, type: 3}
   playerSpawnPoint: {fileID: 1411549894}
+--- !u!114 &1452099091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452099084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c32c8a0b141fb2547b5b61d3f4085e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flipCooldown: 0.5
 --- !u!1 &1672857617
 GameObject:
   m_ObjectHideFlags: 0

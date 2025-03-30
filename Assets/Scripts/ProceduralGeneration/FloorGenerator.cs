@@ -68,6 +68,9 @@ public class FloorGenerator : MonoBehaviour
         }
         floorSegments.Clear();
     }
+    
+    private int floorSegmentIndex = 0;
+    private int roofSegmentIndex = 0;
 
     public void GenerateBlocks()
     {
@@ -75,26 +78,32 @@ public class FloorGenerator : MonoBehaviour
         {
             GenerateSegmentPair();
         }
+        
+        floorSegmentIndex = 0;
+        roofSegmentIndex = 0;
 
         CleanupPreviousBlocks();
     }
     
     
+   
+
     private void GenerateSegmentPair()
     {
+        
         Vector2 floorPos = currentSegmentSpawnPos;
 
         // 1. Create the floor segment
         GameObject floorSegment = Instantiate(floorPrefab, floorPos, Quaternion.identity);
         floorSegment.transform.parent = floorSegmentsParent.transform;
-        AlternateFloorMaterial(floorSegment, floorSegments.Count);
-
+        AlternateFloorMaterial(floorSegment, floorSegmentIndex);
+    
         // 2. Add ramp/rail randomly
         FloorSegmentData floorData = new FloorSegmentData();
         SometimesAddStuffToSegment(floorData, floorSegment);
         floorSegments.Add(floorSegment);
 
-        // 3. Clone floor segment to make roof version
+        // 3. Create mirrored roof block
         GameObject roofSegment = Instantiate(floorSegment);
         roofSegment.transform.position = new Vector3(
             floorSegment.transform.position.x,
@@ -102,35 +111,44 @@ public class FloorGenerator : MonoBehaviour
             floorSegment.transform.position.z
         );
         roofSegment.transform.parent = floorSegmentsParent.transform;
-
-        // 4. Mirror the entire segment by flipping 180° around Z
         roofSegment.transform.rotation = Quaternion.Euler(0, 0, 180);
 
-        // 5. Flip X position of children to correct mirrored placement
+        // 4. Flip X pos of ramps/rails & rotate ramps
         foreach (Transform child in roofSegment.transform)
         {
             Vector3 localPos = child.localPosition;
-            localPos.x *= -1; // Invert X
+            localPos.x *= -1;
             child.localPosition = localPos;
 
-            if (child.name.ToLower().Contains("ramp"))
+            string name = child.name.ToLower();
+
+            if (name.Contains("ramp"))
             {
-                // Also flip ramp direction so it's skatable
-                child.localRotation *= Quaternion.Euler(0, 0, 180);
+                child.localRotation *= Quaternion.Euler(0, 0, 180); // Flip ramp for skatable orientation
+            }
+
+            if (name.Contains("rail"))
+            {
+                child.localRotation *= Quaternion.Euler(0, 180, 0); // Flip rail front-to-back
             }
         }
 
+
+        AlternateFloorMaterial(roofSegment, roofSegmentIndex); // Separate alternating logic
         floorSegments.Add(roofSegment);
 
-        // 6. Add collider to floor if needed
-        if (floorSegments.Count / 2 == segmentCount - howManyBlocksBackToSpawnNewBlocks)
+        // 5. Collider if needed
+        if (floorSegmentIndex == segmentCount - howManyBlocksBackToSpawnNewBlocks)
         {
             Instantiate(colliderPrefab, floorSegment.transform);
         }
 
-        // 7. Move spawn position forward
+        // 6. Advance
         segmentLength = floorSegment.GetComponent<Renderer>().bounds.size.x;
         currentSegmentSpawnPos.x += segmentLength;
+
+        floorSegmentIndex++;
+        roofSegmentIndex++;
     }
 
 

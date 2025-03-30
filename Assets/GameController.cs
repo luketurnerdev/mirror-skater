@@ -32,6 +32,9 @@ public class GameController : MonoBehaviour
 
         if (respawning)
         {
+            // Ensure gravity starts downward
+            Physics.gravity = Vector3.down * 9.81f;
+            
             // Destroy the old player
             GameObject currentPlayer = GameObject.FindWithTag("Player");
             if (currentPlayer != null)

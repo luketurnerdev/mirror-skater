@@ -8,7 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MirrorSkater/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MirrorSkater/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DetectLastBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DetectLastBlock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerControls.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +49,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/84f0d810adef4e6c8deab33e4ae93f7c1dec00/6a/14ad043b/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/84f0d810adef4e6c8deab33e4ae93f7c1dec00/8a/5f9ee2a8/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/DestroySamplesOnLoad.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GravityFlipper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/RampPhysics.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core/Runtime/Debugging/DebugUpdater.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph/Editor/Drawing/Views/StickyNote.cs" root0="SKIP_HIGHLIGHTING" />
@@ -138,7 +139,7 @@
       <workItem from="1743130121497" duration="1936000" />
       <workItem from="1743145552642" duration="21074000" />
       <workItem from="1743210394174" duration="12420000" />
-      <workItem from="1743297735157" duration="10082000" />
+      <workItem from="1743297735157" duration="13775000" />
     </task>
     <servers />
   </component>
@@ -200,55 +201,42 @@
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/GameController.cs</url>
-          <line>53</line>
+          <line>56</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\GameController.cs" containingFunctionPresentation="Method 'Init'">
             <startOffsets>
-              <option value="1447" />
+              <option value="1558" />
             </startOffsets>
             <endOffsets>
-              <option value="1563" />
+              <option value="1674" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/GameController.cs</url>
-          <line>49</line>
+          <line>52</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\GameController.cs" containingFunctionPresentation="Method 'Init'">
             <startOffsets>
-              <option value="1319" />
+              <option value="1430" />
             </startOffsets>
             <endOffsets>
-              <option value="1361" />
+              <option value="1472" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/GameController.cs</url>
-          <line>55</line>
+          <line>58</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\GameController.cs" containingFunctionPresentation="Method 'Init'">
             <startOffsets>
-              <option value="1609" />
+              <option value="1720" />
             </startOffsets>
             <endOffsets>
-              <option value="1629" />
+              <option value="1740" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs</url>
-          <line>58</line>
-          <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\Scripts\ProceduralGeneration\FloorGenerator.cs" containingFunctionPresentation="Method 'DestroyFirstTenChildren'">
-            <startOffsets>
-              <option value="1860" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1886" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="80" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
