@@ -11,6 +11,11 @@ public class RampPhysics : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            PlayerProperties.PlayerState currentState = PlayerProperties.Instance.playerState;
+            if (currentState != PlayerProperties.PlayerState.OnRamp)
+            { 
+                PlayerProperties.Instance.ChangeState(PlayerProperties.PlayerState.OnRamp);
+            }
             Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
             if (playerRb != null)
             {
@@ -26,9 +31,6 @@ public class RampPhysics : MonoBehaviour
 
                 // Apply force to push the player along the ramp surface
                 playerRb.AddForce(rampDirection * rampClimbSpeedMultiplier, ForceMode.Force);
-
-                // Optionally trigger a skating animation if needed
-                PlayerProperties.Instance.ChangeState(PlayerProperties.PlayerState.Grounded);
             }
         }
     }

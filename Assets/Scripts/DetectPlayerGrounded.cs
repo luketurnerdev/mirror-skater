@@ -17,6 +17,7 @@ public class DetectPlayerGrounded : MonoBehaviour
         }
     }
     
+    
     void Start()
     {
         playerControls = FindObjectOfType<PlayerControls>();

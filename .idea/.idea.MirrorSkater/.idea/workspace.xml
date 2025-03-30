@@ -6,17 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="37ca3424-1048-46f0-9174-90c30654d7af" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MirrorSkater/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MirrorSkater/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Rail.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Rail.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RampPhysics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RampPhysics.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DetectLastBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DetectLastBlock.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FollowPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FollowPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DetectPlayerGrounded.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DetectPlayerGrounded.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerControls.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerProperties.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerProperties.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ProceduralGeneration/FloorGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScoreController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScoreController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +33,14 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
@@ -69,7 +71,7 @@
   "keyToString": {
     "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "XThreadsFramesViewSplitterKey": "0.059760958",
+    "XThreadsFramesViewSplitterKey": "0.034165572",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "F:/UnityProjects/MirrorSkater",
     "node.js.detected.package.eslint": "true",
@@ -136,7 +138,7 @@
       <workItem from="1743130121497" duration="1936000" />
       <workItem from="1743145552642" duration="21074000" />
       <workItem from="1743210394174" duration="12420000" />
-      <workItem from="1743297735157" duration="2511000" />
+      <workItem from="1743297735157" duration="3655000" />
     </task>
     <servers />
   </component>
@@ -222,57 +224,57 @@
           </properties>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/GameController.cs</url>
-          <line>52</line>
-          <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\GameController.cs" containingFunctionPresentation="Method 'Init'">
-            <startOffsets>
-              <option value="1420" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1536" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+        <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/GameController.cs</url>
           <line>53</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\GameController.cs" containingFunctionPresentation="Method 'Init'">
             <startOffsets>
-              <option value="1545" />
+              <option value="1447" />
             </startOffsets>
             <endOffsets>
-              <option value="1573" />
+              <option value="1563" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="59" />
+          <option name="timeStamp" value="57" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+        <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/GameController.cs</url>
-          <line>40</line>
+          <line>49</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\GameController.cs" containingFunctionPresentation="Method 'Init'">
             <startOffsets>
-              <option value="1073" />
+              <option value="1319" />
             </startOffsets>
             <endOffsets>
-              <option value="1091" />
+              <option value="1361" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="60" />
+          <option name="timeStamp" value="63" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+        <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/GameController.cs</url>
-          <line>50</line>
+          <line>55</line>
           <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\GameController.cs" containingFunctionPresentation="Method 'Init'">
             <startOffsets>
-              <option value="1370" />
+              <option value="1609" />
             </startOffsets>
             <endOffsets>
-              <option value="1402" />
+              <option value="1629" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="61" />
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/RampPhysics.cs</url>
+          <line>16</line>
+          <properties documentPath="F:\UnityProjects\MirrorSkater\Assets\RampPhysics.cs" containingFunctionPresentation="Method 'OnCollisionStay'">
+            <startOffsets>
+              <option value="717" />
+            </startOffsets>
+            <endOffsets>
+              <option value="792" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="68" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

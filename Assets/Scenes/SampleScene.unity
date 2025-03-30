@@ -686,8 +686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16641524ffcd80b458146526ffd7ab79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  xOffset: 20
+  assignedPlayer: {fileID: 0}
+  xOffset: 10
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,8 +1218,8 @@ MonoBehaviour:
   blueFoorMat: {fileID: 2100000, guid: b4960cf820de2e147a7d84750c513978, type: 2}
   hasRails: 1
   hasRamps: 1
-  railSpawnChance: 0.5
-  rampSpawnChance: 0.5
+  railSpawnChance: 1
+  rampSpawnChance: 0
   segmentCount: 10
   howManyBlocksBackToSpawnNewBlocks: 4
 --- !u!114 &1452099090

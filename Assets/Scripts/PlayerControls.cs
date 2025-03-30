@@ -77,14 +77,17 @@ public class PlayerControls : MonoBehaviour
         {
             PlayAnimIfNotAlreadyPlaying("Skating");
         }
-        else if (verticalVelocity > 0 && currentState != PlayerProperties.PlayerState.Rising)
+        else if (verticalVelocity > 0 && currentState != PlayerProperties.PlayerState.Rising
+                 && currentState != PlayerProperties.PlayerState.OnRamp)
         {
             // Player is moving upwards (jumping)
             playerProps.ChangeState(PlayerProperties.PlayerState.Rising);
         
             PlayAnimIfNotAlreadyPlaying("in air");
         }
-        else if (verticalVelocity < 0 && currentState != PlayerProperties.PlayerState.Grinding && currentState != PlayerProperties.PlayerState.Falling)
+        else if (verticalVelocity < 0 && currentState != PlayerProperties.PlayerState.Grinding 
+                                      && currentState != PlayerProperties.PlayerState.Falling
+                                      && currentState != PlayerProperties.PlayerState.OnRamp)
         {
             // Player is moving downwards (falling) and not grinding
             playerProps.ChangeState(PlayerProperties.PlayerState.Falling);
@@ -122,7 +125,7 @@ public class PlayerControls : MonoBehaviour
     // On held
     void Crouch()
     {
-        if (PlayerProperties.Instance.IsNotAllowedToCrouch()) return;
+        // if (PlayerProperties.Instance.IsNotAllowedToCrouch()) return;
         PlayerProperties.Instance.ChangeState(PlayerProperties.PlayerState.Crouching);
     }
 
@@ -130,7 +133,7 @@ public class PlayerControls : MonoBehaviour
     void Jump()
     {
         // Don't allow double jumps
-        if (PlayerProperties.Instance.IsNotAllowedToJump()) return;
+        // if (PlayerProperties.Instance.IsNotAllowedToJump()) return;
         
         // On jump, give an extra boost
         // before adding acceleration

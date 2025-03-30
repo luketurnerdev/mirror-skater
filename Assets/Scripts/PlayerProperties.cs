@@ -14,6 +14,7 @@ public class PlayerProperties : MonoBehaviour
     public enum PlayerState
     {
         Grounded,
+        OnRamp,
         ApproachingCrouch, // TODO
         Crouching,
         Rising,
@@ -93,6 +94,9 @@ public class PlayerProperties : MonoBehaviour
             case PlayerState.Grinding:
                 playerState = PlayerState.Grinding;
                 scoreController.IncreaseMultiplierForGrinding();
+                break;
+            case PlayerState.OnRamp:
+                playerState = PlayerState.OnRamp;
                 break;
             case PlayerState.Dead:
                 playerState = PlayerState.Dead;
