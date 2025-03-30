@@ -19,8 +19,8 @@ public class FloorGenerator : MonoBehaviour
     public bool hasRails = true;
     public bool hasRamps = true;
     
-    [FormerlySerializedAs("railSpawnChance")] public float railSpawnChancePercentage = 25;
-    [FormerlySerializedAs("rampSpawnChance")] public float rampSpawnChancePercentage = 50;
+    public float railSpawnChancePercentage = 25;
+    public float rampSpawnChancePercentage = 50;
     
     // max amount of segments
     public int segmentCount = 10;
@@ -69,53 +69,102 @@ public class FloorGenerator : MonoBehaviour
         floorSegments.Clear();
     }
 
-    public void GenerateFloors()
+    public void GenerateBlocks()
     {
-        // At the start of the game, generate x amount of floors (say 10)
-        // If the player hits the last block (or maybe the last 2 blocks), generate another x amount of floors
-       
-        // Generate x amount of floor blocks
         for (int i = 0; i < segmentCount; i++)
         {
-            // Instantiate new data class instance and associated gameobject
-            FloorSegmentData segmentData = new FloorSegmentData();
-            GameObject segment = Instantiate(floorPrefab, currentSegmentSpawnPos, Quaternion.identity);
-            
-            // Set parent
-            segment.transform.parent = floorSegmentsParent.transform;
-            
-            // Move the spawn position to the right by the length of the segment
-            segmentLength = segment.GetComponent<Renderer>().bounds.size.x;
-            currentSegmentSpawnPos.x += segmentLength;
-            
-            // Change material for clarity
-            AlternateFloorMaterial(segment, i);
-            
-            // Add stuff randomly to the segment
-            SometimesAddStuffToSegment(segmentData, segment);
-            
-            // The index of the block where we want to spawn a new block
-            // When user crosses it
-
-            int blockIndexForNewSpawn = segmentCount - howManyBlocksBackToSpawnNewBlocks;
-            if (i == blockIndexForNewSpawn)
-            {
-                Instantiate(colliderPrefab, segment.transform);
-            }
-            
-            // Add the segment to the list
-            floorSegments.Add(segment);
+            GenerateSegmentPair();
         }
-        
-        // Garbage Collection
+
         CleanupPreviousBlocks();
     }
+    
+    
+    private void GenerateSegmentPair()
+    {
+        Vector2 floorPos = currentSegmentSpawnPos;
 
+        // 1. Create the floor segment
+        GameObject floorSegment = Instantiate(floorPrefab, floorPos, Quaternion.identity);
+        floorSegment.transform.parent = floorSegmentsParent.transform;
+        AlternateFloorMaterial(floorSegment, floorSegments.Count);
+
+        // 2. Add ramp/rail randomly
+        FloorSegmentData floorData = new FloorSegmentData();
+        SometimesAddStuffToSegment(floorData, floorSegment);
+        floorSegments.Add(floorSegment);
+
+        // 3. Clone floor segment to make roof version
+        GameObject roofSegment = Instantiate(floorSegment);
+        roofSegment.transform.position = new Vector3(
+            floorSegment.transform.position.x,
+            floorSegment.transform.position.y + 20f,
+            floorSegment.transform.position.z
+        );
+        roofSegment.transform.parent = floorSegmentsParent.transform;
+
+        // 4. Mirror the entire segment by flipping 180° around Z
+        roofSegment.transform.rotation = Quaternion.Euler(0, 0, 180);
+
+        // 5. Flip X position of children to correct mirrored placement
+        foreach (Transform child in roofSegment.transform)
+        {
+            Vector3 localPos = child.localPosition;
+            localPos.x *= -1; // Invert X
+            child.localPosition = localPos;
+
+            if (child.name.ToLower().Contains("ramp"))
+            {
+                // Also flip ramp direction so it's skatable
+                child.localRotation *= Quaternion.Euler(0, 0, 180);
+            }
+        }
+
+        floorSegments.Add(roofSegment);
+
+        // 6. Add collider to floor if needed
+        if (floorSegments.Count / 2 == segmentCount - howManyBlocksBackToSpawnNewBlocks)
+        {
+            Instantiate(colliderPrefab, floorSegment.transform);
+        }
+
+        // 7. Move spawn position forward
+        segmentLength = floorSegment.GetComponent<Renderer>().bounds.size.x;
+        currentSegmentSpawnPos.x += segmentLength;
+    }
+
+
+
+    
+    void SpawnRampOnSegment(GameObject parent, bool mirrored = false)
+    {
+        GameObject ramp = Instantiate(rampPrefab, currentSegmentSpawnPos, rampPrefab.transform.rotation);
+        ramp.transform.parent = parent.transform;
+
+        Vector3 offset = new Vector3(-0.3f, 0.5f, 0);
+        if (mirrored) offset.y *= -1;
+
+        ramp.transform.localPosition += offset;
+    }
+
+    void SpawnRailOnSegment(GameObject parent, bool mirrored = false)
+    {
+        GameObject rail = Instantiate(railPrefab, currentSegmentSpawnPos, Quaternion.identity);
+        rail.transform.parent = parent.transform;
+
+        Vector3 offset = new Vector3(0, 2, 0);
+        if (mirrored) offset.y *= -1;
+
+        rail.transform.localPosition += offset;
+    }
+
+    
     void SometimesAddStuffToSegment(FloorSegmentData data, GameObject segment)
     {
         SometimesSpawnRailOnSegment(data, segment);
         SometimesSpawnRampOnSegment(data, segment);
     }
+
 
     void SometimesSpawnRampOnSegment(FloorSegmentData data, GameObject parent)
     {

@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour
         scoreController.ResetScore();
         floorGenerator.ClearAllBlocks();
         floorGenerator.ResetGenerationOnRespawn();
-        floorGenerator.GenerateFloors();
+        floorGenerator.GenerateBlocks();
         
         yield return null;
         GameObject player = Instantiate(playerPrefab, playerSpawnPoint.transform.position, playerPrefab.transform.rotation);
